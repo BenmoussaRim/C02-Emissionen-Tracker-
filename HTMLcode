@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transparente CO2-Emissionsdaten von Ländern und Unternehmen weltweit. Interaktive Datentabelle mit Filter- und Sortierfunktionen.">
+    <meta name="keywords" content="CO2, Emissionen, Klimawandel, Transparenz, Umwelt">
+    <meta name="author" content="Climate Action Now">
+    <meta name="theme-color" content="#2c5f2d">
+    
+    <!-- Open Graph Meta Tags für Social Media -->
+    <meta property="og:title" content="CO2-Emissions-Transparenz">
+    <meta property="og:description" content="Transparente CO2-Emissionsdaten von Ländern und Unternehmen">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline'; 
+                   style-src 'self' 'unsafe-inline'; 
+                   img-src 'self' data: https:;">
+    
+    <title>CO2-Emissions-Transparenz | Climate Action Now</title>
+</head>
+<body>
+    <!-- Header mit Logo und Navigation -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="images/logo.svg" alt="Climate Action Now Logo - Grünes Blatt Symbol" width="50" height="50">
+                    <h1>CO2-Emissions-Transparenz</h1>
+                </div>
+                
+                <!-- Hauptnavigation -->
+                <nav class="main-nav" aria-label="Hauptnavigation">
+                    <ul>
+                        <li><a href="#start">Start</a></li>
+                        <li><a href="#daten">Daten</a></li>
+                        <li><a href="#about">Über uns</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main id="main-content">
+        <!-- Hero-Sektion -->
+        <section id="start" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Transparenz für eine nachhaltige Zukunft</h2>
+                    <p class="hero-description">
+                        Entdecken Sie detaillierte CO2-Emissionsdaten von Ländern und Unternehmen weltweit.
+                        Unsere Mission ist es, durch Transparenz zum Klimaschutz beizutragen.
+                    </p>
+                    <a href="#daten" class="cta-button">Daten erkunden</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daten-Sektion -->
+        <section id="daten" class="data-section">
+            <div class="container">
+                <h2>CO2-Emissionsdaten</h2>
+                <p class="section-intro">
+                    Filtern und sortieren Sie die Daten nach Ihren Interessen.
+                    Alle Angaben in Millionen Tonnen CO2 pro Jahr.
+                </p>
+                
+                <div class="data-container">
+                    <!-- Sidebar mit Filtern -->
+                    <aside class="sidebar" role="complementary" aria-label="Filter-Optionen">
+                        <h3>Filter</h3>
+                        
+                        <form id="filterForm" class="filter-form">
+                            <!-- Länder-Filter -->
+                            <div class="form-group">
+                                <label for="countryFilter">Land:</label>
+                                <select id="countryFilter" name="country" class="form-control">
+                                    <option value="">Alle Länder</option>
+                                    <!-- Optionen werden dynamisch geladen -->
+                                </select>
+                            </div>
+                            
+                            <!-- Sektor-Filter -->
+                            <div class="form-group">
+                                <label for="sectorFilter">Sektor:</label>
+                                <select id="sectorFilter" name="sector" class="form-control">
+                                    <option value="">Alle Sektoren</option>
+                                    <!-- Optionen werden dynamisch geladen -->
+                                </select>
+                            </div>
+                            
+                            <!-- Such-Filter -->
+                            <div class="form-group">
+                                <label for="searchInput">Suche:</label>
+                                <input 
+                                    type="text" 
+                                    id="searchInput" 
+                                    name="search" 
+                                    class="form-control" 
+                                    placeholder="Unternehmen suchen..."
+                                    maxlength="100"
+                                    pattern="[a-zA-ZäöüÄÖÜß0-9\s\-&.]*"
+                                    title="Nur Buchstaben, Zahlen und Standardzeichen erlaubt"
+                                    aria-label="Suchfeld für Unternehmen">
+                            </div>
+                            
+                            <!-- Buttons -->
+                            <div class="button-group">
+                                <button type="submit" class="btn btn-primary">
+                                    Filtern
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    Zurücksetzen
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <!-- Ergebnis-Anzeige -->
+                        <div class="result-info">
+                            <p id="resultCount" aria-live="polite"></p>
+                        </div>
+                    </aside>
+
+                    <!-- Content-Bereich mit Datentabelle -->
+                    <article class="content" role="main" aria-label="CO2-Emissionsdaten">
+                        <div class="table-container">
+                            <table class="emissions-table" id="emissionsTable">
+                                <caption>
+                                    CO2-Emissionen nach Land und Unternehmen (in Millionen Tonnen pro Jahr)
+                                </caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" 
+                                            data-column="country" 
+                                            class="sortable"
+                                            role="button"
+                                            tabindex="0"
+                                            aria-label="Nach Land sortieren">
+                                            Land
+                                        </th>
+                                        <th scope="col" 
+                                            data-column="company" 
+                                            class="sortable"
+                                            role="button"
+                                            tabindex="0"
+                                            aria-label="Nach Unternehmen sortieren">
+                                            Unternehmen
+                                        </th>
+                                        <th scope="col" 
+                                            data-column="sector" 
+                                            class="sortable"
+                                            role="button"
+                                            tabindex="0"
+                                            aria-label="Nach Sektor sortieren">
+                                            Sektor
+                                        </th>
+                                        <th scope="col" 
+                                            data-column="emissions" 
+                                            class="sortable"
+                                            role="button"
+                                            tabindex="0"
+                                            aria-label="Nach CO2-Emissionen sortieren">
+                                            CO2-Emissionen (Mio. t)
+                                        </th>
+                                        <th scope="col" 
+                                            data-column="year" 
+                                            class="sortable"
+                                            role="button"
+                                            tabindex="0"
+                                            aria-label="Nach Jahr sortieren">
+                                            Jahr
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Daten werden dynamisch via JavaScript eingefügt -->
+                                    <tr>
+                                        <td colspan="5" class="loading">
+                                            Daten werden geladen...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns Sektion -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>Über Climate Action Now</h2>
+                <div class="about-content">
+                    <p>
+                        Climate Action Now ist eine Non-Profit-Organisation, die sich für Transparenz
+                        im Klimaschutz einsetzt. Wir sammeln, analysieren und veröffentlichen
+                        CO2-Emissionsdaten, um fundierte Entscheidungen für eine nachhaltige Zukunft
+                        zu ermöglichen.
+                    </p>
+                    <p>
+                        Unsere Mission ist es, durch offene Daten und transparente Kommunikation
+                        das Bewusstsein für den Klimawandel zu schärfen und konkrete Maßnahmen
+                        zu fördern.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt Sektion -->
+        <section id="kontakt" class="contact-section">
+            <div class="container">
+                <h2>Kontakt</h2>
+                <p>
+                    Haben Sie Fragen oder Anregungen? Kontaktieren Sie uns!
+                </p>
+                <div class="contact-info">
+                    <p>
+                        <strong>Email:</strong> 
+                        <a href="mailto:info@climateactionnow.org">info@climateactionnow.org</a>
+                    </p>
+                    <p>
+                        <strong>Telefon:</strong> +49 (0) 123 456789
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Climate Action Now</h3>
+                    <p>Für eine transparente und nachhaltige Zukunft.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Rechtliches</h3>
+                    <ul>
+                        <li><a href="#impressum">Impressum</a></li>
+                        <li><a href="#datenschutz">Datenschutz</a></li>
+                        <li><a href="#nutzungsbedingungen">Nutzungsbedingungen</a></li>
+                        <li><a href="#cookies">Cookie-Richtlinien</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Folgen Sie uns</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter" rel="noopener noreferrer">Twitter</a>
+                        <a href="#" aria-label="LinkedIn" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="#" aria-label="Facebook" rel="noopener noreferrer">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2024 Climate Action Now. Alle Rechte vorbehalten.
+                    Datenquellen: Fiktive Daten zu Demonstrationszwecken.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Optional: HTTPS-Erzwingung -->
+    <script>
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            location.replace('https:' + location.href.substring(location.protocol.length));
+        }
+    </script>
+</body>
+</html>

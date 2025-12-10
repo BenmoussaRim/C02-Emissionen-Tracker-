@@ -1,0 +1,793 @@
+/* ===================================
+   CO2-Emissions-Transparenz Website
+   Stylesheet - Main CSS File
+   =================================== */
+
+/* ===================================
+   1. BASE STYLES & RESET
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* ===================================
+   2. TYPOGRAPHY
+   =================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    color: #2c5f2d;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: #2c5f2d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: #234d23;
+    text-decoration: underline;
+}
+
+/* ===================================
+   3. LAYOUT UTILITIES
+   =================================== */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ===================================
+   4. HEADER STYLES
+   =================================== */
+
+.site-header {
+    background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+    color: white;
+    padding: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.logo h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    color: white;
+}
+
+/* Navigation */
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.6rem;
+    transition: opacity 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    opacity: 0.8;
+    text-decoration: underline;
+    outline: 2px solid rgba(255,255,255,0.5);
+    outline-offset: 4px;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* ===================================
+   5. HERO SECTION
+   =================================== */
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(44, 95, 45, 0.9), rgba(151, 188, 98, 0.9)),
+                url('../images/hero-bg.jpg') center/cover;
+    color: white;
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.hero-description {
+    font-size: 1.8rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: white;
+    color: #2c5f2d;
+    padding: 1.5rem 4rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    text-decoration: none;
+}
+
+/* ===================================
+   6. DATA SECTION
+   =================================== */
+
+.data-section {
+    padding: 6rem 0;
+    background-color: #f4f4f4;
+}
+
+.data-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    text-align: center;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    font-size: 1.7rem;
+}
+
+/* Grid Layout für Sidebar + Content */
+.data-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-areas: "sidebar content";
+    gap: 3rem;
+}
+
+/* ===================================
+   7. SIDEBAR & FILTER
+   =================================== */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    height: fit-content;
+    position: sticky;
+    top: 10rem;
+}
+
+.sidebar h3 {
+    color: #2c5f2d;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.form-control {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #2c5f2d;
+    box-shadow: 0 0 0 3px rgba(44, 95, 45, 0.1);
+}
+
+.form-control:invalid {
+    border-color: #dc3545;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: #2c5f2d;
+    color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #234d23;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #5a6268;
+}
+
+/* Result Info */
+.result-info {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.result-info p {
+    font-size: 1.4rem;
+    color: #666;
+    margin: 0;
+}
+
+/* ===================================
+   8. CONTENT AREA & TABLE
+   =================================== */
+
+.content {
+    grid-area: content;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* Tabellen-Styles */
+.emissions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+}
+
+.emissions-table caption {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    color: #2c5f2d;
+}
+
+.emissions-table thead {
+    background-color: #2c5f2d;
+    color: white;
+}
+
+.emissions-table th {
+    padding: 1.4rem 1.2rem;
+    text-align: left;
+    font-weight: 600;
+    user-select: none;
+}
+
+.emissions-table th.sortable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.emissions-table th.sortable:hover {
+    background-color: #234d23;
+}
+
+.emissions-table th.sortable:focus {
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+/* Sortierungs-Indikatoren */
+.emissions-table th.sortable::after {
+    content: ' ⇅';
+    opacity: 0.3;
+    margin-left: 0.5rem;
+}
+
+.emissions-table th.sort-asc::after {
+    content: ' ↑';
+    opacity: 1;
+}
+
+.emissions-table th.sort-desc::after {
+    content: ' ↓';
+    opacity: 1;
+}
+
+.emissions-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+.emissions-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.emissions-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.emissions-table td {
+    padding: 1.2rem;
+}
+
+.emissions-table .emissions-value {
+    font-weight: 600;
+    color: #d9534f;
+}
+
+/* Loading & No Data States */
+.loading,
+.no-data {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* ===================================
+   9. ABOUT & CONTACT SECTIONS
+   =================================== */
+
+.about-section,
+.contact-section {
+    padding: 6rem 0;
+    background-color: white;
+}
+
+.about-section {
+    background-color: #f9f9f9;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.7rem;
+    line-height: 1.8;
+}
+
+.contact-info {
+    max-width: 600px;
+    margin: 2rem auto;
+    font-size: 1.7rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+}
+
+/* ===================================
+   10. FOOTER
+   =================================== */
+
+.site-footer {
+    background-color: #2c5f2d;
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section p {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover,
+.footer-section a:focus {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* ===================================
+   11. ERROR MESSAGES
+   =================================== */
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #dc3545;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+/* ===================================
+   12. RESPONSIVE DESIGN
+   =================================== */
+
+/* Tablets (bis 1024px) */
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 58%;
+    }
+    
+    .data-container {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
+/* Tablets Portrait (bis 768px) */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 56%;
+    }
+    
+    .data-container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "sidebar"
+            "content";
+    }
+    
+    .sidebar {
+        position: static;
+    }
+    
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .main-nav {
+        display: none;
+        width: 100%;
+        order: 3;
+    }
+    
+    .main-nav.active {
+        display: block;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding-top: 1rem;
+    }
+    
+    .main-nav li {
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .main-nav a {
+        display: block;
+        padding: 1rem 0;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .hero-content h2 {
+        font-size: 3rem;
+    }
+}
+
+/* Mobile (bis 576px) */
+@media screen and (max-width: 576px) {
+    html {
+        font-size: 54%;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-section {
+        padding: 5rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .cta-button {
+        padding: 1.2rem 3rem;
+        font-size: 1.6rem;
+    }
+    
+    /* Mobile: Card-Layout für Tabellen */
+    .emissions-table,
+    .emissions-table thead,
+    .emissions-table tbody,
+    .emissions-table th,
+    .emissions-table td,
+    .emissions-table tr {
+        display: block;
+    }
+    
+    .emissions-table thead {
+        display: none;
+    }
+    
+    .emissions-table caption {
+        font-size: 1.6rem;
+    }
+    
+    .emissions-table tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .emissions-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .emissions-table td:last-child {
+        border-bottom: none;
+    }
+    
+    .emissions-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #2c5f2d;
+        margin-right: 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ===================================
+   13. RTL SUPPORT
+   =================================== */
+
+[dir="rtl"] .sidebar {
+    margin-right: 0;
+    margin-left: 2rem;
+}
+
+[dir="rtl"] .main-nav ul {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .logo {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .emissions-table th,
+[dir="rtl"] .emissions-table td {
+    text-align: right;
+}
+
+/* ===================================
+   14. PRINT STYLES
+   =================================== */
+
+@media print {
+    .site-header,
+    .hero-section,
+    .sidebar,
+    .site-footer {
+        display: none;
+    }
+    
+    .data-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .emissions-table {
+        font-size: 1.2rem;
+    }
+    
+    .emissions-table th,
+    .emissions-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* ===================================
+   15. ACCESSIBILITY ENHANCEMENTS
+   =================================== */
+
+/* Focus Styles */
+*:focus {
+    outline: 2px solid #2c5f2d;
+    outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2c5f2d;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
