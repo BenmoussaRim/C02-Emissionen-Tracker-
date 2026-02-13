@@ -1,4 +1,4 @@
-// app.js - Hauptanwendung für CO2-Emissions-Transparenz
+// app.js - Hauptanwendung für CO2-Emissions-Tracker
 
 'use strict';
 
@@ -565,4 +565,5 @@ console.log('%cReposit: https://github.com/username/co2-emissions-website',
        
    
       
+
 
