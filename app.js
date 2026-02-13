@@ -549,35 +549,7 @@ const CO2App = (function() {
 // Warten bis DOM geladen ist
 document.addEventListener('DOMContentLoaded', function() {
     CO2App.init();
-});
-
-// ============================================
-// ZUSÄTZLICHE FEATURES
-// ============================================
-
-/**
- * Service Worker Registration (für PWA)
- */
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        // Service Worker würde hier registriert werden
-        // navigator.serviceWorker.register('/sw.js')
-        //     .then(reg => console.log('SW registered'))
-        //     .catch(err => console.log('SW registration failed'));
-    });
-}
-
-/**
- * Warnung vor ungespeicherten Änderungen
- * (Würde aktiviert wenn Formulare mit Änderungen existieren)
- */
-// window.addEventListener('beforeunload', function(e) {
-//     if (hasUnsavedChanges) {
-//         e.preventDefault();
-//         e.returnValue = '';
-//     }
-// });
-
+})
 /**
  * Console-Ausgabe für Entwickler
  */
@@ -593,3 +565,4 @@ console.log('%cReposit: https://github.com/username/co2-emissions-website',
        
    
       
+
